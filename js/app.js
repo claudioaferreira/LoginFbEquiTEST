@@ -121,7 +121,7 @@ function aparece(user) {
             <fieldset>
                 <div class="card">
                     <div class="card-body">
-                        <div class="mb-3">
+                        <div class="mb-3">v
                             <label for="imei" class="form-label"><h4>Introduce el IMEI:</h4></label>
                             <input type="number" class="form-control" id="imei" name="imei" aria-describedby="imei">
                     </div>
