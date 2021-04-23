@@ -97,16 +97,12 @@ observador();
 function aparece(user) {
   var user = user;
   var contenido = document.getElementById("contenido");
+  var contenidoLogueo = document.getElementById("seccionLogueo")
   if (user.emailVerified) {
     contenido.innerHTML = `
-        <div class="container mt-2 ">
-          <button class="btn btn-danger" onclick="cerrar()">Cerrar sesion</button>
-       </div>
-        <div class="container mt-5">
+              <div class="container mt-5">
         <div class="alert alert-success alert-dismissible fade show" role="alert">
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-           <h4 class="alert-heading">Bievenido! ${user.email}</h4>
-        <hr>
              <p class="mb-0">Favor ingresar datos del equipo!!.</p>
         </div>
       
@@ -121,7 +117,7 @@ function aparece(user) {
             <fieldset>
                 <div class="card">
                     <div class="card-body">
-                        <div class="mb-3">v
+                        <div class="mb-3">
                             <label for="imei" class="form-label"><h4>Introduce el IMEI:</h4></label>
                             <input type="number" class="form-control" id="imei" name="imei" aria-describedby="imei">
                     </div>
@@ -208,8 +204,19 @@ function aparece(user) {
         </div>
     </div>
                           `;
-  }
+  } contenidoLogueo.innerHTML= `
+              <h4 class="text-decoration-underline font-weight-bold ">Bievenido! ${user.email}</h4>
+              <div class="container mt-2 ">
+              <button class="btn btn-danger" onclick="cerrar()">Cerrar sesion</button>
+           </div>
+                                `;
 };
+
+function refrescar (){
+  location.reload();
+  setInterval("refrescar()",5000);
+  
+}
 
 function cerrar() {
   firebase
@@ -219,6 +226,8 @@ function cerrar() {
       contenido.innerHTML = "";
       toastr["info"]("Te esperamos pronto!!", "Adios")
       console.log("Saliendo...");
+      refrescar ()
+      // window.opener.document.location.reload();
       // Sign-out successful.
     })
     .catch((error) => {
@@ -240,6 +249,8 @@ function verificar() {
       // An error happened.
     });
 }
+
+
 
 
 ///////////////////////////////////////////// FORMULARIO INGRESAR IMEI
