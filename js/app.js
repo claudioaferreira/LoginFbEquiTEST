@@ -17,7 +17,7 @@ function registrar() {
       verificar(); // para solo enviar correo verificacion al momento de verificacion
       // Signed in
       var user = userCredential.user;
-      // ...
+      toastr["info"]("Se ha enviado un correo electronico, debes verificarlo!!", "Gracias por registrarte.")
     })
     .catch((error) => {
       var errorCode = error.code;
